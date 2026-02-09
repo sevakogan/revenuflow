@@ -6,7 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { Check } from "@/components/ui/IconSet";
 import StaggerChildren, { staggerItem } from "@/components/animations/StaggerChildren";
-import { PRICING_TIERS } from "@/lib/constants";
+import { PRICING_TIERS, PRICING_ADDON } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export default function PricingSection() {
@@ -71,14 +71,21 @@ export default function PricingSection() {
 
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-white">
-                    {tier.price === "Custom"
-                      ? "Custom"
-                      : isAnnual
-                      ? `$${Math.round(parseInt(tier.price.replace("$", "")) * 0.8)}`
+                    {tier.price.startsWith("$")
+                      ? isAnnual
+                        ? `$${Math.round(parseInt(tier.price.replace("$", "")) * 0.8)}`
+                        : tier.price
                       : tier.price}
                   </span>
                   {tier.period && (
                     <span className="text-slate-500 text-sm">{tier.period}</span>
+                  )}
+                  {isAnnual && tier.price.startsWith("$") && (
+                    <div className="mt-1">
+                      <span className="text-brand-emerald text-xs font-medium">
+                        Save 20% with annual billing
+                      </span>
+                    </div>
                   )}
                 </div>
 
@@ -106,6 +113,42 @@ export default function PricingSection() {
             </motion.div>
           ))}
         </StaggerChildren>
+
+        {/* Social Media Add-on */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" as const }}
+          className="mt-12 max-w-2xl mx-auto"
+        >
+          <div className="rounded-2xl p-6 md:p-8 border border-brand-purple/20 bg-white/[0.02] text-center">
+            <div className="inline-block px-3 py-1 bg-brand-purple/10 border border-brand-purple/20 rounded-full text-brand-purple text-xs font-semibold uppercase tracking-wider mb-4">
+              Add-on
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">
+              {PRICING_ADDON.name}
+            </h3>
+            <p className="text-slate-400 text-sm mb-4">
+              {PRICING_ADDON.description}
+            </p>
+            <div>
+              <span className="text-3xl font-bold text-white">
+                {isAnnual
+                  ? `$${Math.round(parseInt(PRICING_ADDON.price.replace("$", "")) * 0.8)}`
+                  : PRICING_ADDON.price}
+              </span>
+              <span className="text-slate-500 text-sm">{PRICING_ADDON.period}</span>
+              {isAnnual && (
+                <div className="mt-1">
+                  <span className="text-brand-emerald text-xs font-medium">
+                    Save 20% with annual billing
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

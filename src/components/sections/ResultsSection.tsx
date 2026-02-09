@@ -23,7 +23,7 @@ const counterStats = [
   { target: 20, prefix: "$", suffix: "M+", label: "Revenue Managed" },
   { target: 30, suffix: "+", label: "Properties" },
   { target: 96, suffix: "%", label: "Client Retention" },
-  { target: 15, suffix: "+", label: "Markets Served" },
+  { target: 5, suffix: "+", label: "Markets Served" },
 ];
 
 export default function ResultsSection() {

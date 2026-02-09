@@ -151,14 +151,14 @@ export const TESTIMONIALS: Testimonial[] = [
 export const PRICING_TIERS: PricingTier[] = [
   {
     name: "Essentials",
-    price: "$99",
+    price: "$250",
     period: "/property/mo",
     description: "For hosts who want hands-off pricing done right.",
     features: [
-      "1-3 properties",
       "Dynamic pricing setup & management",
       "Monthly performance review",
-      "Email support",
+      "Slack support",
+      "12-hour response time",
       "Airbnb & VRBO optimization",
     ],
     highlighted: false,
@@ -166,16 +166,16 @@ export const PRICING_TIERS: PricingTier[] = [
   },
   {
     name: "Growth",
-    price: "$79",
+    price: "$225",
     period: "/property/mo",
     description: "For serious operators who want a true revenue partner.",
     features: [
-      "4-15 properties",
       "Everything in Essentials",
       "Weekly strategy calls",
       "Competitor monitoring",
       "Multi-platform sync",
-      "Direct phone & text support",
+      "Slack support",
+      "6-hour response time",
       "Custom pricing rules",
     ],
     highlighted: true,
@@ -187,7 +187,6 @@ export const PRICING_TIERS: PricingTier[] = [
     period: "",
     description: "White-glove service for larger portfolios that demand personal attention.",
     features: [
-      "15+ properties",
       "Everything in Growth",
       "Dedicated revenue manager",
       "Market expansion strategy",
@@ -199,6 +198,13 @@ export const PRICING_TIERS: PricingTier[] = [
     cta: "Contact Sales",
   },
 ];
+
+export const PRICING_ADDON = {
+  name: "Social Media Management",
+  price: "$250",
+  period: "/mo",
+  description: "3–4 posts per week across your channels. Available as an add-on to any plan.",
+};
 
 export const FAQS: FAQ[] = [
   {
