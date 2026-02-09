@@ -2,16 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import Logo from "@/components/ui/Logo";
 import Button from "@/components/ui/Button";
 import { Menu, X } from "@/components/ui/IconSet";
 import { NAV_LINKS } from "@/lib/constants";
 import useScrollSpy from "@/hooks/useScrollSpy";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/components/auth/AuthProvider";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const { user, profile, isLoading } = useAuth();
   const activeId = useScrollSpy(
     NAV_LINKS.map((l) => l.href.replace("#", "")),
     80
@@ -72,15 +75,30 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <Button
-              size="sm"
-              onClick={() =>
-                document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Get Free Analysis
-            </Button>
+          <div className="hidden md:flex items-center gap-3">
+            {!isLoading && user ? (
+              <Link href={profile?.role === "admin" || profile?.role === "assistant" ? "/admin" : "/dashboard"}>
+                <Button size="sm" variant="secondary">
+                  {profile?.role === "admin" || profile?.role === "assistant" ? "Admin Panel" : "Dashboard"}
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button size="sm" variant="ghost">
+                    Log In
+                  </Button>
+                </Link>
+                <Button
+                  size="sm"
+                  onClick={() =>
+                    document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
+                  Get Free Analysis
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -115,16 +133,32 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <Button
-                onClick={() => {
-                  setIsMobileOpen(false);
-                  document
-                    .getElementById("cta")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Get Free Analysis
-              </Button>
+              {!isLoading && user ? (
+                <Link
+                  href={profile?.role === "admin" || profile?.role === "assistant" ? "/admin" : "/dashboard"}
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  <Button>
+                    {profile?.role === "admin" || profile?.role === "assistant" ? "Admin Panel" : "Dashboard"}
+                  </Button>
+                </Link>
+              ) : (
+                <>
+                  <Link href="/login" onClick={() => setIsMobileOpen(false)}>
+                    <Button variant="ghost">Log In</Button>
+                  </Link>
+                  <Button
+                    onClick={() => {
+                      setIsMobileOpen(false);
+                      document
+                        .getElementById("cta")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Get Free Analysis
+                  </Button>
+                </>
+              )}
             </div>
           </motion.div>
         )}
