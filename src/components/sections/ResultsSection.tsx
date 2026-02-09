@@ -2,6 +2,7 @@
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import Button from "@/components/ui/Button";
 import GlowEffect from "@/components/ui/GlowEffect";
 import FadeInView from "@/components/animations/FadeInView";
 
@@ -91,6 +92,21 @@ export default function ResultsSection() {
                 <div className="text-sm text-slate-500">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </FadeInView>
+
+        {/* CTA */}
+        <FadeInView>
+          <div className="mt-16 text-center">
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() =>
+                document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Get a Free Analysis
+            </Button>
           </div>
         </FadeInView>
       </div>
