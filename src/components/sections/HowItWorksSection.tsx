@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StaggerChildren, { staggerItem } from "@/components/animations/StaggerChildren";
 import { STEPS } from "@/lib/constants";
@@ -13,45 +14,85 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; size?: n
 };
 
 export default function HowItWorksSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax offsets for each step card
+  const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [80, -80]);
+
+  // Subtle parallax for background glow
+  const bgY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
+  const parallaxValues = [y1, y2, y3];
+
   return (
-    <section id="how-it-works" className="relative py-24 md:py-32 bg-white/[0.01]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      ref={sectionRef}
+      id="how-it-works"
+      className="relative py-24 md:py-32 bg-white/[0.01] overflow-hidden"
+    >
+      {/* Parallax background glow */}
+      <motion.div
+        style={{ y: bgY }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
           overline="How It Works"
           title="Three Steps to Higher Revenue"
           subtitle="Getting started takes less than 5 minutes. Our platform handles the rest."
         />
 
-        <StaggerChildren className="relative grid md:grid-cols-3 gap-8 md:gap-12">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-24 left-[20%] right-[20%] h-px bg-gradient-to-r from-brand-blue via-brand-purple to-brand-cyan" />
+        <div className="relative">
+          {/* Connecting line — runs through the icon row */}
+          <div className="hidden md:block absolute top-0 left-0 right-0" style={{ top: "calc(5rem + 2rem + 2rem)" }}>
+            {/* Line from center of step 1 icon to center of step 3 icon */}
+            <div className="mx-auto" style={{ width: "66.666%", position: "relative" }}>
+              <div className="h-px w-full bg-gradient-to-r from-brand-blue via-brand-purple to-brand-cyan" />
+              {/* Dot at start */}
+              <div className="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-brand-blue" />
+              {/* Dot in middle */}
+              <div className="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 rounded-full bg-brand-purple" />
+              {/* Dot at end */}
+              <div className="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-brand-cyan" />
+            </div>
+          </div>
 
-          {STEPS.map((step, i) => {
-            const Icon = iconMap[step.icon];
-            return (
-              <motion.div
-                key={i}
-                variants={staggerItem}
-                className="relative text-center"
-              >
-                {/* Step number */}
-                <div className="text-6xl md:text-7xl font-bold text-gradient opacity-20 mb-4">
-                  {step.number}
-                </div>
+          <StaggerChildren className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {STEPS.map((step, i) => {
+              const Icon = iconMap[step.icon];
+              return (
+                <motion.div
+                  key={i}
+                  variants={staggerItem}
+                  style={{ y: parallaxValues[i] }}
+                  className="relative text-center"
+                >
+                  {/* Step number */}
+                  <div className="text-6xl md:text-7xl font-bold text-gradient opacity-20 mb-4">
+                    {step.number}
+                  </div>
 
-                {/* Icon circle */}
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-blue/20 to-brand-purple/20 border border-white/[0.1] flex items-center justify-center mx-auto mb-6 relative z-10 bg-brand-dark">
-                  {Icon && <Icon className="text-brand-blue" size={28} />}
-                </div>
+                  {/* Icon circle */}
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-blue/20 to-brand-purple/20 border border-white/[0.1] flex items-center justify-center mx-auto mb-6 relative z-10 bg-brand-dark">
+                    {Icon && <Icon className="text-brand-blue" size={28} />}
+                  </div>
 
-                <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
-                <p className="text-slate-400 leading-relaxed max-w-sm mx-auto">
-                  {step.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </StaggerChildren>
+                  <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
+                  <p className="text-slate-400 leading-relaxed max-w-sm mx-auto">
+                    {step.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </StaggerChildren>
+        </div>
       </div>
     </section>
   );

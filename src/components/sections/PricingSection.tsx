@@ -133,6 +133,7 @@ export default function PricingSection() {
               {PRICING_ADDON.description}
             </p>
             <div>
+              <span className="text-slate-400 text-sm">Starting at </span>
               <span className="text-3xl font-bold text-white">
                 {isAnnual
                   ? `$${Math.round(parseInt(PRICING_ADDON.price.replace("$", "")) * 0.8)}`
