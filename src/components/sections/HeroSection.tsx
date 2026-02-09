@@ -28,7 +28,7 @@ export default function HeroSection() {
             <motion.div variants={fadeInUp}>
               <Badge className="mb-6">
                 <span className="w-2 h-2 rounded-full bg-brand-emerald animate-pulse" />
-                Trusted by 500+ property managers
+                AI-powered tools, human expertise — $20M+ managed
               </Badge>
             </motion.div>
 
@@ -36,17 +36,17 @@ export default function HeroSection() {
               variants={fadeInUp}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6"
             >
-              Maximize Revenue on{" "}
-              <span className="text-gradient">Every Property,</span>{" "}
-              Every Night
+              Stop Undercharging{" "}
+              <span className="text-gradient">Your Best Nights</span>
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="text-lg md:text-xl text-slate-400 leading-relaxed mb-8 max-w-xl"
             >
-              AI-powered dynamic pricing and market intelligence for Airbnb hosts
-              and vacation rental managers. Stop leaving money on the table.
+              Events, holidays, demand spikes — if you&apos;re not adjusting in
+              real-time, you&apos;re giving revenue away. Let AI handle your pricing
+              so you can focus on hospitality.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 mb-12">
