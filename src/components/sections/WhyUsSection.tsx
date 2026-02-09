@@ -5,7 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
 import GlowEffect from "@/components/ui/GlowEffect";
 import StaggerChildren, { staggerItem } from "@/components/animations/StaggerChildren";
-import { Check, Users, Zap, Shield } from "@/components/ui/IconSet";
+import { Users, Zap, Shield } from "@/components/ui/IconSet";
 
 const differentiators = [
   {
