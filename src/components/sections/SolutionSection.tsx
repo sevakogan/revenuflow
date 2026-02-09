@@ -33,7 +33,7 @@ export default function SolutionSection() {
             <SectionHeading
               overline="The Solution"
               title="Intelligent Revenue Management, Automated"
-              subtitle="RevenueFlow combines machine learning with real-time market data to optimize every pricing decision for every property, every night."
+              subtitle="RevenuFlow combines machine learning with real-time market data to optimize every pricing decision for every property, every night."
               align="left"
             />
 

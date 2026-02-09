@@ -121,7 +121,7 @@ export const STEPS: Step[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "RevenueFlow transformed our pricing strategy completely. We went from manually adjusting rates every week to a fully automated system that outperforms our best guesses every time.",
+      "RevenuFlow transformed our pricing strategy completely. We went from manually adjusting rates every week to a fully automated system that outperforms our best guesses every time.",
     author: "Sarah Chen",
     title: "Director of Revenue",
     company: "Pacific Coast Rentals",
@@ -139,7 +139,7 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "Managing 200+ properties used to mean a team of 3 dedicated to pricing. RevenueFlow handles it all and generates better results than we ever achieved manually.",
+      "Managing 200+ properties used to mean a team of 3 dedicated to pricing. RevenuFlow handles it all and generates better results than we ever achieved manually.",
     author: "Emily Watson",
     title: "CEO",
     company: "Urban Nest Properties",
@@ -209,7 +209,7 @@ export const FAQS: FAQ[] = [
   {
     question: "Which platforms do you integrate with?",
     answer:
-      "RevenueFlow integrates with all major booking platforms including Airbnb, VRBO, Booking.com, Expedia, and direct booking websites. We also connect with popular PMS systems like Guesty, Hostaway, Lodgify, and Hospitable.",
+      "RevenuFlow integrates with all major booking platforms including Airbnb, VRBO, Booking.com, Expedia, and direct booking websites. We also connect with popular PMS systems like Guesty, Hostaway, Lodgify, and Hospitable.",
   },
   {
     question: "How long until I see results?",

@@ -14,7 +14,7 @@ export default function TestimonialsSection() {
         <SectionHeading
           overline="Testimonials"
           title="What Our Clients Say"
-          subtitle="Property managers trust RevenueFlow to drive real, measurable revenue growth."
+          subtitle="Property managers trust RevenuFlow to drive real, measurable revenue growth."
         />
 
         <StaggerChildren className="grid md:grid-cols-3 gap-6 md:gap-8">

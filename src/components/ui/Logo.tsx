@@ -50,7 +50,7 @@ export default function Logo({ className, size = "md" }: LogoProps) {
           size === "lg" && "text-2xl"
         )}
       >
-        Revenue<span className="text-gradient">Flow</span>
+        Revenu<span className="text-gradient">Flow</span>
       </span>
     </div>
   );

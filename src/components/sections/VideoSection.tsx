@@ -14,7 +14,7 @@ export default function VideoSection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeading
           overline="See It in Action"
-          title="Watch How RevenueFlow Works"
+          title="Watch How RevenuFlow Works"
           subtitle="A quick walkthrough of how our platform optimizes pricing and boosts revenue for short-term rental operators."
         />
 

@@ -75,7 +75,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} RevenueFlow. All rights reserved.
+            &copy; {new Date().getFullYear()} RevenuFlow. All rights reserved.
           </p>
           <p className="text-slate-600 text-xs">
             Made for property managers everywhere

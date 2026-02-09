@@ -35,7 +35,7 @@ export default function ResultsSection() {
         <SectionHeading
           overline="Results"
           title="Real Revenue Impact"
-          subtitle="See the measurable difference RevenueFlow makes for property managers across the country."
+          subtitle="See the measurable difference RevenuFlow makes for property managers across the country."
         />
 
         {/* Before / After */}
@@ -44,7 +44,7 @@ export default function ResultsSection() {
             {/* Before */}
             <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 md:p-8">
               <div className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-6">
-                Before RevenueFlow
+                Before RevenuFlow
               </div>
               <div className="space-y-4">
                 {beforeStats.map((stat, i) => (
@@ -61,7 +61,7 @@ export default function ResultsSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-transparent rounded-2xl" />
               <div className="relative">
                 <div className="text-sm font-semibold text-brand-blue uppercase tracking-widest mb-6">
-                  After RevenueFlow
+                  After RevenuFlow
                 </div>
                 <div className="space-y-4">
                   {afterStats.map((stat, i) => (

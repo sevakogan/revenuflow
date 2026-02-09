@@ -12,7 +12,7 @@ export default function FAQSection() {
         <SectionHeading
           overline="FAQ"
           title="Frequently Asked Questions"
-          subtitle="Everything you need to know about RevenueFlow. Can't find what you're looking for? Contact our team."
+          subtitle="Everything you need to know about RevenuFlow. Can't find what you're looking for? Contact our team."
         />
 
         <FadeInView>
