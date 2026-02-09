@@ -13,6 +13,7 @@ import {
   PROPERTY_COUNT_OPTIONS,
   REVENUE_OPTIONS,
 } from "@/lib/constants";
+import { supabase } from "@/lib/supabase";
 
 interface FormData {
   name: string;
@@ -59,10 +60,24 @@ export default function CTASection() {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const { error } = await supabase.from("leads").insert({
+        name: formData.name,
+        email: formData.email,
+        property_type: formData.propertyType,
+        property_count: formData.propertyCount,
+        revenue: formData.revenue || null,
+        location: formData.location || null,
+      });
+
+      if (error) throw error;
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error("Failed to submit lead:", err);
+      setErrors({ email: "Something went wrong. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: keyof FormData, value: string) => {
