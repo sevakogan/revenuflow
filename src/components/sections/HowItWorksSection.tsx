@@ -49,50 +49,44 @@ export default function HowItWorksSection() {
           subtitle="Getting started takes less than 5 minutes. Our platform handles the rest."
         />
 
-        <div className="relative">
-          {/* Connecting line — runs through the icon row */}
-          <div className="hidden md:block absolute top-0 left-0 right-0" style={{ top: "calc(5rem + 2rem + 2rem)" }}>
-            {/* Line from center of step 1 icon to center of step 3 icon */}
-            <div className="mx-auto" style={{ width: "66.666%", position: "relative" }}>
-              <div className="h-px w-full bg-gradient-to-r from-brand-blue via-brand-purple to-brand-cyan" />
-              {/* Dot at start */}
-              <div className="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-brand-blue" />
-              {/* Dot in middle */}
-              <div className="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 rounded-full bg-brand-purple" />
-              {/* Dot at end */}
-              <div className="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-brand-cyan" />
-            </div>
-          </div>
+        <StaggerChildren className="grid md:grid-cols-3 gap-8 md:gap-12">
+          {STEPS.map((step, i) => {
+            const Icon = iconMap[step.icon];
+            return (
+              <motion.div
+                key={i}
+                variants={staggerItem}
+                style={{ y: parallaxValues[i] }}
+                className="relative text-center"
+              >
+                {/* Step number */}
+                <div className="text-6xl md:text-7xl font-bold text-gradient opacity-20 mb-4">
+                  {step.number}
+                </div>
 
-          <StaggerChildren className="grid md:grid-cols-3 gap-8 md:gap-12">
-            {STEPS.map((step, i) => {
-              const Icon = iconMap[step.icon];
-              return (
-                <motion.div
-                  key={i}
-                  variants={staggerItem}
-                  style={{ y: parallaxValues[i] }}
-                  className="relative text-center"
-                >
-                  {/* Step number */}
-                  <div className="text-6xl md:text-7xl font-bold text-gradient opacity-20 mb-4">
-                    {step.number}
-                  </div>
-
-                  {/* Icon circle */}
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-blue/20 to-brand-purple/20 border border-white/[0.1] flex items-center justify-center mx-auto mb-6 relative z-10 bg-brand-dark">
+                {/* Icon circle with connecting line */}
+                <div className="relative flex items-center justify-center mb-6">
+                  {/* Line going right from icon center */}
+                  {i < STEPS.length - 1 && (
+                    <div className="hidden md:block absolute left-1/2 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-brand-blue to-brand-purple" style={{ width: "calc(100% + 3rem)", marginLeft: "2rem" }} />
+                  )}
+                  {/* Line coming in from the left */}
+                  {i > 0 && (
+                    <div className="hidden md:block absolute right-1/2 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-brand-purple to-brand-cyan" style={{ width: "calc(100% + 3rem)", marginRight: "2rem" }} />
+                  )}
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-blue/20 to-brand-purple/20 border border-white/[0.1] flex items-center justify-center relative z-10 bg-brand-dark">
                     {Icon && <Icon className="text-brand-blue" size={28} />}
                   </div>
+                </div>
 
-                  <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
-                  <p className="text-slate-400 leading-relaxed max-w-sm mx-auto">
-                    {step.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </StaggerChildren>
-        </div>
+                <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
+                <p className="text-slate-400 leading-relaxed max-w-sm mx-auto">
+                  {step.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </StaggerChildren>
       </div>
     </section>
   );
