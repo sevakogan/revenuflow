@@ -52,3 +52,29 @@ export interface ProblemCard {
   title: string;
   description: string;
 }
+
+// Auth & User types
+export type UserRole = "wholesale" | "retail" | "admin" | "assistant";
+export type UserStatus = "pending" | "approved" | "denied";
+
+export interface Profile {
+  id: string;
+  email: string;
+  full_name: string;
+  avatar_url: string | null;
+  role: UserRole;
+  status: UserStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Lead {
+  id: string;
+  name: string;
+  email: string;
+  property_type: string;
+  property_count: string;
+  revenue: string | null;
+  location: string | null;
+  created_at: string;
+}
