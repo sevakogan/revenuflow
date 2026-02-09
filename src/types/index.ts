@@ -1,0 +1,54 @@
+export interface NavLink {
+  label: string;
+  href: string;
+}
+
+export interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface Step {
+  number: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface Testimonial {
+  quote: string;
+  author: string;
+  title: string;
+  company: string;
+  metric: string;
+  initials: string;
+}
+
+export interface PricingTier {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  highlighted: boolean;
+  cta: string;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface Stat {
+  value: number;
+  prefix?: string;
+  suffix: string;
+  label: string;
+}
+
+export interface ProblemCard {
+  icon: string;
+  title: string;
+  description: string;
+}
