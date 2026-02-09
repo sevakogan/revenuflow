@@ -10,9 +10,9 @@ import { Users, Zap, Shield } from "@/components/ui/IconSet";
 const differentiators = [
   {
     icon: Zap,
-    title: "AI & Automation First",
+    title: "Best-in-Class Pricing Tools",
     description:
-      "We use PriceLabs, custom AI models, and automated pricing engines to respond to market shifts in real-time — faster than any human could alone.",
+      "We use PriceLabs and other leading pricing software — and recommend the right tool based on your property location and market. No one-size-fits-all here.",
   },
   {
     icon: Users,

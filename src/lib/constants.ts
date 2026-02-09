@@ -24,14 +24,14 @@ export const STATS: Stat[] = [
 ];
 
 export const SOCIAL_PROOF_LOGOS: string[] = [
-  "Vacasa",
-  "Evolve",
+  "Airbnb",
+  "VRBO",
   "Guesty",
-  "AvantStay",
   "Hospitable",
-  "Lodgify",
+  "PriceLabs",
   "Hostaway",
-  "Breezeway",
+  "Lodgify",
+  "Wheelhouse",
 ];
 
 export const PROBLEM_CARDS: ProblemCard[] = [
@@ -84,7 +84,7 @@ export const FEATURES: Feature[] = [
     icon: "Globe",
     title: "Multi-Platform Sync",
     description:
-      "Sync pricing across Airbnb, VRBO, Booking.com, and direct booking sites automatically. One dashboard to manage every channel effortlessly.",
+      "Sync pricing across Airbnb, VRBO, Guesty, Hospitable, and other PMS platforms automatically. One dashboard to manage every channel effortlessly.",
   },
   {
     icon: "Shield",
@@ -97,23 +97,23 @@ export const FEATURES: Feature[] = [
 export const STEPS: Step[] = [
   {
     number: "01",
-    title: "Connect",
+    title: "Grant Access",
     description:
-      "Link your properties from Airbnb, VRBO, Booking.com, or any PMS. Setup takes less than 5 minutes with our guided onboarding.",
+      "Give us access to your Airbnb, VRBO, Guesty, Hospitable, or other PMS. It takes minutes — and we handle everything from there.",
     icon: "LinkIcon",
   },
   {
     number: "02",
-    title: "Analyze",
+    title: "We Take Over",
     description:
-      "Our AI analyzes your market, competitors, and demand patterns to build a custom pricing strategy tailored to each property.",
+      "Our team analyzes your market, selects the right pricing tools for your location, and builds a custom strategy for each property.",
     icon: "Search",
   },
   {
     number: "03",
-    title: "Optimize",
+    title: "You Earn More",
     description:
-      "Dynamic pricing automatically maximizes your revenue 24/7. Watch occupancy and revenue climb while you focus on hospitality.",
+      "Automated pricing backed by human oversight runs 24/7. Watch your occupancy and revenue climb while you focus on hospitality.",
     icon: "Rocket",
   },
 ];
@@ -209,7 +209,7 @@ export const FAQS: FAQ[] = [
   {
     question: "Which platforms do you integrate with?",
     answer:
-      "RevenuFlow integrates with all major booking platforms including Airbnb, VRBO, Booking.com, Expedia, and direct booking websites. We also connect with popular PMS systems like Guesty, Hostaway, Lodgify, and Hospitable.",
+      "RevenuFlow works with all major platforms including Airbnb, VRBO, and direct booking websites. We also integrate with popular PMS systems like Guesty, Hospitable, Hostaway, and Lodgify.",
   },
   {
     question: "How long until I see results?",
