@@ -18,9 +18,9 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const STATS: Stat[] = [
-  { value: 2.4, prefix: "$", suffix: "B+", label: "Revenue Optimized" },
-  { value: 12000, suffix: "+", label: "Properties Managed" },
-  { value: 35, suffix: "%", label: "Avg. Revenue Increase" },
+  { value: 20, prefix: "$", suffix: "M+", label: "Revenue Managed" },
+  { value: 30, suffix: "+", label: "Properties" },
+  { value: 96, suffix: "%", label: "Client Retention" },
 ];
 
 export const SOCIAL_PROOF_LOGOS: string[] = [
@@ -121,79 +121,79 @@ export const STEPS: Step[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "RevenuFlow transformed our pricing strategy completely. We went from manually adjusting rates every week to a fully automated system that outperforms our best guesses every time.",
-    author: "Sarah Chen",
-    title: "Director of Revenue",
-    company: "Pacific Coast Rentals",
-    metric: "+42% revenue in 3 months",
-    initials: "SC",
+      "I was spending hours every week adjusting rates and still missing the mark. They took over and within a month my revenue was noticeably higher — and I didn't have to touch a thing.",
+    author: "Luxury Villa Owner",
+    title: "Scottsdale, AZ",
+    company: "8 Properties",
+    metric: "Hands-free pricing",
+    initials: "AZ",
   },
   {
     quote:
-      "The demand forecasting alone is worth the investment. We now prepare for events and seasonal shifts weeks in advance, capturing revenue we used to miss entirely.",
-    author: "Marcus Rodriguez",
-    title: "Property Manager",
-    company: "Mountain View Stays",
-    metric: "+38% occupancy rate",
-    initials: "MR",
+      "What sold me was the personal attention. This isn't some algorithm you never hear from. They actually review my listings, call me with ideas, and treat my portfolio like it's their own.",
+    author: "Vacation Rental Host",
+    title: "Miami, FL",
+    company: "3 Properties",
+    metric: "White-glove service",
+    initials: "FL",
   },
   {
     quote:
-      "Managing 200+ properties used to mean a team of 3 dedicated to pricing. RevenuFlow handles it all and generates better results than we ever achieved manually.",
-    author: "Emily Watson",
-    title: "CEO",
-    company: "Urban Nest Properties",
-    metric: "$1.2M additional revenue",
-    initials: "EW",
+      "I've tried PriceLabs on my own — it's a great tool but I didn't have time to manage it properly. These guys set it up, monitor it, and adjust when the algorithm misses something. Best of both worlds.",
+    author: "Property Manager",
+    title: "Nashville, TN",
+    company: "12 Properties",
+    metric: "Expert + automation",
+    initials: "TN",
   },
 ];
 
 export const PRICING_TIERS: PricingTier[] = [
   {
-    name: "Starter",
-    price: "$29",
+    name: "Essentials",
+    price: "$99",
     period: "/property/mo",
-    description: "Perfect for individual hosts getting started with smart pricing.",
+    description: "For hosts who want hands-off pricing done right.",
     features: [
-      "Up to 5 properties",
-      "Dynamic pricing engine",
-      "Basic market analytics",
+      "1-3 properties",
+      "Dynamic pricing setup & management",
+      "Monthly performance review",
       "Email support",
-      "Airbnb & VRBO integration",
+      "Airbnb & VRBO optimization",
     ],
     highlighted: false,
-    cta: "Start Free Trial",
+    cta: "Get Started",
   },
   {
-    name: "Professional",
-    price: "$49",
+    name: "Growth",
+    price: "$79",
     period: "/property/mo",
-    description: "For growing property managers who need a competitive edge.",
+    description: "For serious operators who want a true revenue partner.",
     features: [
-      "Up to 50 properties",
-      "Everything in Starter",
-      "Competitor tracking",
-      "Demand forecasting",
+      "4-15 properties",
+      "Everything in Essentials",
+      "Weekly strategy calls",
+      "Competitor monitoring",
       "Multi-platform sync",
-      "Priority support",
-      "Revenue reports",
+      "Direct phone & text support",
+      "Custom pricing rules",
     ],
     highlighted: true,
     cta: "Get Free Analysis",
   },
   {
-    name: "Enterprise",
-    price: "Custom",
+    name: "Portfolio",
+    price: "Let's Talk",
     period: "",
-    description: "For large portfolios requiring dedicated support and customization.",
+    description: "White-glove service for larger portfolios that demand personal attention.",
     features: [
-      "Unlimited properties",
-      "Everything in Professional",
-      "Dedicated account manager",
-      "Custom integrations",
-      "API access",
-      "SLA guarantee",
-      "White-label options",
+      "15+ properties",
+      "Everything in Growth",
+      "Dedicated revenue manager",
+      "Market expansion strategy",
+      "Listing optimization",
+      "Priority response time",
+      "Quarterly business reviews",
     ],
     highlighted: false,
     cta: "Contact Sales",
@@ -202,44 +202,44 @@ export const PRICING_TIERS: PricingTier[] = [
 
 export const FAQS: FAQ[] = [
   {
-    question: "How does dynamic pricing work?",
+    question: "How does the pricing optimization work?",
     answer:
-      "Our AI engine analyzes dozens of data points including local events, competitor pricing, historical booking data, seasonality, and real-time demand signals. It automatically adjusts your prices multiple times per day to capture the optimal rate for every night.",
+      "We use tools like PriceLabs and other leading pricing software — selected based on your market and property type. But we don't just plug it in and walk away. Our team reviews pricing decisions, monitors market shifts, and makes manual adjustments when the algorithms miss something.",
   },
   {
-    question: "Which platforms do you integrate with?",
+    question: "Which platforms do you work with?",
     answer:
-      "RevenuFlow works with all major platforms including Airbnb, VRBO, and direct booking websites. We also integrate with popular PMS systems like Guesty, Hospitable, Hostaway, and Lodgify.",
+      "We work with Airbnb, VRBO, and direct booking websites. We also integrate with PMS systems like Guesty, Hospitable, Hostaway, and Lodgify. If you use a different platform, reach out — we likely support it.",
   },
   {
     question: "How long until I see results?",
     answer:
-      "Most clients see measurable revenue improvement within the first 30 days. Our AI needs about 2 weeks of data to fully calibrate to your specific market, after which pricing optimization is fully automated and continuously improving.",
+      "Most clients see noticeable improvement within the first 30 days. We need about 2 weeks to analyze your market and calibrate pricing. After that, optimization runs continuously with our team keeping a close eye on performance.",
   },
   {
     question: "Is there a minimum number of properties?",
     answer:
-      "No minimum required. Our Starter plan works great for individual hosts with even a single property. The platform scales seamlessly as your portfolio grows from 1 to 1,000+ properties.",
+      "No. We work with hosts who have a single property all the way up to portfolios with 15+. Every client gets personal attention regardless of size.",
   },
   {
-    question: "Can I override the suggested prices?",
+    question: "Do I lose control over my pricing?",
     answer:
-      "Absolutely. You have full control at all times. Set minimum and maximum price boundaries, block specific dates, or manually override any price. The AI learns from your adjustments to better match your preferences over time.",
+      "Never. You always have the final say. We set min/max boundaries together, respect your preferences, and you can override any price at any time. We're here to advise and optimize — not to take over.",
   },
   {
-    question: "How is the subscription pricing calculated?",
+    question: "How is pricing structured?",
     answer:
-      "Pricing is per property per month. You only pay for active properties. Annual plans save 20% compared to monthly billing. Volume discounts are available for portfolios of 50+ properties on our Enterprise plan.",
+      "It's per property per month, and you only pay for active properties. We offer volume discounts for larger portfolios, and annual plans save 20%. Request a free analysis and we'll give you an exact quote.",
   },
   {
-    question: "Do you offer a free trial?",
+    question: "Can I try before I commit?",
     answer:
-      "Yes, we offer a 14-day free trial on all plans with no credit card required. You can also request a free revenue analysis to see exactly how much more your properties could earn before committing.",
+      "Yes. We offer a free revenue analysis where we look at your properties and show you exactly where you're leaving money on the table — with no obligation. If you like what you see, we'll get started right away.",
   },
   {
-    question: "What support do you provide?",
+    question: "What kind of support do I get?",
     answer:
-      "Starter plans include email support with 24-hour response times. Professional plans get priority support with live chat. Enterprise clients receive a dedicated account manager, phone support, and custom onboarding.",
+      "This isn't a helpdesk. You get direct access to the person managing your revenue — by phone, text, or email. Growth and Portfolio clients get regular strategy calls and proactive recommendations.",
   },
 ];
 

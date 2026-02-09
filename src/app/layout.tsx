@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "RevenuFlow | Maximize Every Night's Revenue",
     description:
-      "AI-powered dynamic pricing for short-term rentals. Increase revenue by 35% on average.",
+      "Hands-on revenue management for short-term rentals. AI tools backed by real expertise.",
   },
   robots: { index: true, follow: true },
 };

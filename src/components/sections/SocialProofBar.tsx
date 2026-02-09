@@ -12,7 +12,7 @@ export default function SocialProofBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeInView>
           <p className="text-center text-sm text-slate-500 uppercase tracking-widest mb-8">
-            Trusted by leading property management companies
+            Platforms & tools we work with
           </p>
         </FadeInView>
 
@@ -32,9 +32,9 @@ export default function SocialProofBar() {
         <FadeInView delay={0.2}>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mt-10">
             {[
-              { value: "12,000+", label: "Properties Managed" },
-              { value: "$2.4B", label: "Revenue Optimized" },
-              { value: "98%", label: "Client Retention" },
+              { value: "30+", label: "Properties Managed" },
+              { value: "$20M+", label: "Revenue Managed" },
+              { value: "96%", label: "Client Retention" },
             ].map((item, i) => (
               <div
                 key={i}

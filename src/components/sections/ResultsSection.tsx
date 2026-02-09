@@ -6,24 +6,24 @@ import GlowEffect from "@/components/ui/GlowEffect";
 import FadeInView from "@/components/animations/FadeInView";
 
 const beforeStats = [
-  { label: "Avg. Monthly Revenue", value: "$3,200", color: "text-slate-400" },
+  { label: "Avg. Nightly Rate", value: "Underpriced", color: "text-slate-400" },
   { label: "Occupancy Rate", value: "62%", color: "text-slate-400" },
   { label: "Hours on Pricing/Week", value: "5+ hrs", color: "text-slate-400" },
-  { label: "Revenue Missed", value: "~$1,600/mo", color: "text-red-400" },
+  { label: "Peak Night Revenue Lost", value: "Significant", color: "text-red-400" },
 ];
 
 const afterStats = [
-  { label: "Avg. Monthly Revenue", value: "$4,800", color: "text-brand-emerald" },
-  { label: "Occupancy Rate", value: "89%", color: "text-brand-emerald" },
+  { label: "Avg. Nightly Rate", value: "Optimized", color: "text-brand-emerald" },
+  { label: "Occupancy Rate", value: "85%+", color: "text-brand-emerald" },
   { label: "Hours on Pricing/Week", value: "0 hrs", color: "text-brand-emerald" },
-  { label: "Revenue Gained", value: "+$1,600/mo", color: "text-brand-emerald" },
+  { label: "Peak Night Revenue", value: "Maximized", color: "text-brand-emerald" },
 ];
 
 const counterStats = [
-  { target: 35, suffix: "%", label: "Avg. Revenue Increase" },
-  { target: 89, suffix: "%", label: "Avg. Occupancy Rate" },
-  { target: 2.4, prefix: "$", suffix: "B+", label: "Revenue Optimized" },
-  { target: 12000, suffix: "+", label: "Properties Managed" },
+  { target: 20, prefix: "$", suffix: "M+", label: "Revenue Managed" },
+  { target: 30, suffix: "+", label: "Properties" },
+  { target: 96, suffix: "%", label: "Client Retention" },
+  { target: 15, suffix: "+", label: "Markets Served" },
 ];
 
 export default function ResultsSection() {
@@ -35,7 +35,7 @@ export default function ResultsSection() {
         <SectionHeading
           overline="Results"
           title="Real Revenue Impact"
-          subtitle="See the measurable difference RevenuFlow makes for property managers across the country."
+          subtitle="Hands-on revenue management that treats every property like our own."
         />
 
         {/* Before / After */}
