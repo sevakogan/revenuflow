@@ -13,11 +13,11 @@ import {
   PROPERTY_COUNT_OPTIONS,
   REVENUE_OPTIONS,
 } from "@/lib/constants";
-import { supabase } from "@/lib/supabase";
 
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   propertyType: string;
   propertyCount: string;
   revenue: string;
@@ -32,12 +32,14 @@ export default function CTASection() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    phone: "",
     propertyType: "",
     propertyCount: "",
     revenue: "",
     location: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [smsConsent, setSmsConsent] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -61,16 +63,23 @@ export default function CTASection() {
 
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("leads").insert({
-        name: formData.name,
-        email: formData.email,
-        property_type: formData.propertyType,
-        property_count: formData.propertyCount,
-        revenue: formData.revenue || null,
-        location: formData.location || null,
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          property_type: formData.propertyType,
+          property_count: formData.propertyCount,
+          revenue: formData.revenue || null,
+          location: formData.location || null,
+          smsConsent,
+        }),
       });
 
-      if (error) throw error;
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
       setIsSubmitted(true);
     } catch (err) {
       console.error("Failed to submit lead:", err);
@@ -152,6 +161,13 @@ export default function CTASection() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-5 mb-5">
+                <Input
+                  label="Phone Number"
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  value={formData.phone}
+                  onChange={(e) => handleChange("phone", e.target.value)}
+                />
                 <Select
                   label="Property Type"
                   options={PROPERTY_TYPE_OPTIONS}
@@ -161,6 +177,9 @@ export default function CTASection() {
                   error={errors.propertyType}
                   required
                 />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5 mb-5">
                 <Select
                   label="Number of Properties"
                   options={PROPERTY_COUNT_OPTIONS}
@@ -170,9 +189,6 @@ export default function CTASection() {
                   error={errors.propertyCount}
                   required
                 />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-5 mb-8">
                 <Select
                   label="Current Monthly Revenue"
                   options={REVENUE_OPTIONS}
@@ -180,12 +196,34 @@ export default function CTASection() {
                   value={formData.revenue}
                   onChange={(e) => handleChange("revenue", e.target.value)}
                 />
+              </div>
+
+              <div className="mb-5">
                 <Input
                   label="Market / Location"
                   placeholder="e.g., Miami, FL"
                   value={formData.location}
                   onChange={(e) => handleChange("location", e.target.value)}
                 />
+              </div>
+
+              {/* SMS Consent */}
+              <div className="flex items-start gap-3 mb-8">
+                <input
+                  id="cta-sms-consent"
+                  type="checkbox"
+                  checked={smsConsent}
+                  onChange={(e) => setSmsConsent(e.target.checked)}
+                  className="mt-1 w-4 h-4 rounded border-white/20 bg-white/[0.05] text-brand-blue focus:ring-brand-blue/50 accent-brand-blue cursor-pointer shrink-0"
+                />
+                <label htmlFor="cta-sms-consent" className="text-xs text-slate-400 leading-relaxed cursor-pointer">
+                  I agree to receive SMS messages from TheLevelTeam LLC (DBA RevenuFlow), including
+                  appointment confirmations, reminders, and follow-ups. Message frequency varies
+                  (approx. 2-5 msgs/month). Message &amp; data rates may apply. Reply STOP to opt out.
+                  Consent is not a condition of purchase. View our{" "}
+                  <a href="/terms" className="text-brand-blue hover:underline">Terms</a> &amp;{" "}
+                  <a href="/privacy" className="text-brand-blue hover:underline">Privacy Policy</a>.
+                </label>
               </div>
 
               <Button

@@ -72,9 +72,11 @@ export interface Lead {
   id: string;
   name: string;
   email: string;
+  phone: string | null;
   property_type: string;
   property_count: string;
   revenue: string | null;
   location: string | null;
+  sms_consent: boolean;
   created_at: string;
 }

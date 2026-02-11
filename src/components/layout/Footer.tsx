@@ -1,9 +1,22 @@
+import Link from "next/link";
 import Logo from "@/components/ui/Logo";
 
 const footerLinks = {
-  Product: ["Features", "Pricing", "Integrations", "API", "Changelog"],
-  Company: ["About", "Blog", "Careers", "Contact", "Partners"],
-  Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy", "GDPR"],
+  Product: [
+    { label: "Features", href: "/#features" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Results", href: "/#results" },
+    { label: "How It Works", href: "/#how-it-works" },
+  ],
+  Company: [
+    { label: "Contact", href: "/contact" },
+    { label: "Book a Call", href: "/book" },
+    { label: "Get Started", href: "/#cta" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+  ],
 };
 
 export default function Footer() {
@@ -14,10 +27,24 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Logo className="mb-4" />
-            <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-4">
               AI-powered revenue management for short-term rentals. Maximize
               every night&apos;s revenue with dynamic pricing and market intelligence.
             </p>
+            <div className="space-y-2 mb-6">
+              <a
+                href="tel:+18669966382"
+                className="block text-slate-400 text-sm hover:text-white transition-colors"
+              >
+                (866) 996-6382
+              </a>
+              <a
+                href="mailto:support@revenuflow.com"
+                className="block text-slate-400 text-sm hover:text-white transition-colors"
+              >
+                support@revenuflow.com
+              </a>
+            </div>
             <div className="flex gap-4">
               {/* Twitter/X */}
               <a
@@ -58,13 +85,13 @@ export default function Footer() {
               <h3 className="text-white font-semibold text-sm mb-4">{title}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
                       className="text-slate-400 text-sm hover:text-white transition-colors"
                     >
-                      {link}
-                    </a>
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -75,11 +102,16 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} RevenuFlow. All rights reserved.
+            &copy; {new Date().getFullYear()} TheLevelTeam LLC, DBA RevenuFlow. All rights reserved.
           </p>
-          <p className="text-slate-600 text-xs">
-            Made for property managers everywhere
-          </p>
+          <div className="flex gap-6 text-xs text-slate-600">
+            <Link href="/privacy" className="hover:text-slate-400 transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-slate-400 transition-colors">
+              Terms
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

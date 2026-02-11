@@ -89,14 +89,11 @@ export default function Navbar() {
                     Log In
                   </Button>
                 </Link>
-                <Button
-                  size="sm"
-                  onClick={() =>
-                    document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" })
-                  }
-                >
-                  Get Free Analysis
-                </Button>
+                <Link href="/#cta">
+                  <Button size="sm">
+                    Get Free Analysis
+                  </Button>
+                </Link>
               </>
             )}
           </div>
@@ -147,16 +144,11 @@ export default function Navbar() {
                   <Link href="/login" onClick={() => setIsMobileOpen(false)}>
                     <Button variant="ghost">Log In</Button>
                   </Link>
-                  <Button
-                    onClick={() => {
-                      setIsMobileOpen(false);
-                      document
-                        .getElementById("cta")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                  >
-                    Get Free Analysis
-                  </Button>
+                  <Link href="/#cta" onClick={() => setIsMobileOpen(false)}>
+                    <Button>
+                      Get Free Analysis
+                    </Button>
+                  </Link>
                 </>
               )}
             </div>
