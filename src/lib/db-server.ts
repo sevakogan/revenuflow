@@ -15,7 +15,7 @@ export async function createContactSubmission(data: {
 }): Promise<number> {
   const supabase = getServerSupabase();
   const { data: row, error } = await supabase
-    .from("contact_submissions")
+    .from("rf_contact_submissions")
     .insert(data)
     .select("id")
     .single();
