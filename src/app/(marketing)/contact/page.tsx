@@ -4,11 +4,11 @@ import ContactForm from "./contact-form";
 export const metadata: Metadata = {
   title: "Contact Us | RevenuFlow Revenue Management",
   description:
-    "Get in touch with RevenuFlow. Tell us about your short-term rental portfolio and we'll show you how our revenue management services can maximize your earnings.",
+    "Get in touch with RevenuFlow. Tell us about your Airbnb, VRBO, Booking.com, hotel, or vacation rental portfolio and we'll show you how to maximize your earnings across all OTA channels.",
   openGraph: {
     title: "Contact Us | RevenuFlow",
     description:
-      "Learn how RevenuFlow's revenue management services can maximize your Airbnb and vacation rental earnings. Get a free portfolio analysis.",
+      "Learn how RevenuFlow's revenue management services can maximize your Airbnb, VRBO, Booking.com, and vacation rental earnings. Get a free portfolio analysis.",
     url: "https://revenuflow.vercel.app/contact",
   },
   alternates: {

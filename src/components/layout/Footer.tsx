@@ -28,8 +28,9 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Logo className="mb-4" />
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-4">
-              AI-powered revenue management for short-term rentals. Maximize
-              every night&apos;s revenue with dynamic pricing and market intelligence.
+              Revenue management for Airbnb, VRBO, Booking.com, Expedia, hotels,
+              and vacation rentals. Maximize every night&apos;s revenue with dynamic
+              pricing and multi-channel OTA optimization.
             </p>
             <div className="space-y-2 mb-6">
               <a

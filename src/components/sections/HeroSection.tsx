@@ -45,8 +45,8 @@ export default function HeroSection() {
               className="text-lg md:text-xl text-slate-400 leading-relaxed mb-8 max-w-xl"
             >
               Events, holidays, demand spikes — if you&apos;re not adjusting in
-              real-time, you&apos;re giving revenue away. Let AI handle your pricing
-              so you can focus on hospitality.
+              real-time across Airbnb, VRBO, Booking.com, and every OTA channel,
+              you&apos;re giving revenue away. Let AI handle your pricing.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 mb-12">

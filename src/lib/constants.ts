@@ -26,6 +26,8 @@ export const STATS: Stat[] = [
 export const SOCIAL_PROOF_LOGOS: string[] = [
   "Airbnb",
   "VRBO",
+  "Booking.com",
+  "Expedia",
   "Guesty",
   "Hospitable",
   "PriceLabs",
@@ -72,7 +74,7 @@ export const FEATURES: Feature[] = [
     icon: "Search",
     title: "Competitor Tracking",
     description:
-      "Monitor competitor pricing, availability, and positioning across all major platforms. Stay ahead with real-time intelligence on your market.",
+      "Monitor competitor pricing, availability, and positioning across Airbnb, VRBO, Booking.com, Expedia, and all major OTAs. Stay ahead with real-time market intelligence.",
   },
   {
     icon: "TrendingUp",
@@ -84,7 +86,7 @@ export const FEATURES: Feature[] = [
     icon: "Globe",
     title: "Multi-Platform Sync",
     description:
-      "Sync pricing across Airbnb, VRBO, Guesty, Hospitable, and other PMS platforms automatically. One dashboard to manage every channel effortlessly.",
+      "Sync pricing across Airbnb, VRBO, Booking.com, Expedia, and all OTA channels automatically. Integrates with Guesty, Hospitable, and other PMS platforms.",
   },
   {
     icon: "Shield",
@@ -99,7 +101,7 @@ export const STEPS: Step[] = [
     number: "01",
     title: "Grant Access",
     description:
-      "Give us access to your Airbnb, VRBO, Guesty, Hospitable, or other PMS. It takes minutes — and we handle everything from there.",
+      "Give us access to your Airbnb, VRBO, Booking.com, or PMS like Guesty and Hospitable. It takes minutes — and we handle everything from there.",
     icon: "LinkIcon",
   },
   {
@@ -151,7 +153,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const PRICING_TIERS: PricingTier[] = [
   {
     name: "Essentials",
-    price: "$250",
+    price: "$375",
     period: "/property/mo",
     description: "For hosts who want hands-off pricing done right.",
     features: [
@@ -159,14 +161,14 @@ export const PRICING_TIERS: PricingTier[] = [
       "Monthly performance review",
       "Slack support",
       "12-hour response time",
-      "Airbnb & VRBO optimization",
+      "Airbnb, VRBO & Booking.com optimization",
     ],
     highlighted: false,
     cta: "Get Started",
   },
   {
     name: "Growth",
-    price: "$225",
+    price: "$450",
     period: "/property/mo",
     description: "For serious operators who want a true revenue partner.",
     features: [
@@ -183,7 +185,7 @@ export const PRICING_TIERS: PricingTier[] = [
   },
   {
     name: "Portfolio",
-    price: "Let's Talk",
+    price: "Contact",
     period: "",
     description: "White-glove service for larger portfolios that demand personal attention.",
     features: [
@@ -215,7 +217,7 @@ export const FAQS: FAQ[] = [
   {
     question: "Which platforms do you work with?",
     answer:
-      "We work with Airbnb, VRBO, and direct booking websites. We also integrate with PMS systems like Guesty, Hospitable, Hostaway, and Lodgify. If you use a different platform, reach out — we likely support it.",
+      "We work with Airbnb, VRBO, Booking.com, Expedia, Google Vacation Rentals, and direct booking websites. We also integrate with PMS systems like Guesty, Hospitable, Hostaway, and Lodgify. We support vacation rentals, boutique hotels, resorts, and serviced apartments. If you use a different platform, reach out — we likely support it.",
   },
   {
     question: "How long until I see results?",
@@ -252,7 +254,11 @@ export const FAQS: FAQ[] = [
 export const PROPERTY_TYPE_OPTIONS = [
   { value: "vacation-rental", label: "Vacation Rental" },
   { value: "airbnb", label: "Airbnb" },
+  { value: "hotel", label: "Hotel" },
   { value: "boutique-hotel", label: "Boutique Hotel" },
+  { value: "resort", label: "Resort" },
+  { value: "serviced-apartment", label: "Serviced Apartment" },
+  { value: "corporate-housing", label: "Corporate Housing" },
   { value: "property-management", label: "Property Management Company" },
   { value: "other", label: "Other" },
 ];

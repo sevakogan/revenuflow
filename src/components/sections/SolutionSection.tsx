@@ -9,11 +9,11 @@ import FadeInView from "@/components/animations/FadeInView";
 import StaggerChildren, { staggerItem } from "@/components/animations/StaggerChildren";
 
 const solutionPoints = [
-  "AI-powered dynamic pricing that adjusts in real-time",
-  "Competitor monitoring across all major platforms",
-  "Demand forecasting weeks in advance",
-  "Automated multi-channel pricing synchronization",
-  "Actionable revenue insights and reporting",
+  "AI-powered dynamic pricing that adjusts in real-time across all OTA channels",
+  "Competitor monitoring across Airbnb, VRBO, Booking.com, Expedia, and more",
+  "Demand forecasting weeks in advance using ML models",
+  "Automated multi-channel pricing sync for vacation rentals and hotels",
+  "ADR and RevPAR tracking with actionable revenue insights",
 ];
 
 export default function SolutionSection() {

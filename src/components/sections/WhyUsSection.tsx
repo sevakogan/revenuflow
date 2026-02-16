@@ -74,10 +74,10 @@ export default function WhyUsSection() {
               &ldquo;We don&apos;t just set it and forget it.&rdquo;
             </p>
             <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto">
-              Our team actively monitors your performance, spots opportunities the
-              algorithms miss, and adjusts strategy based on years of hands-on
-              experience across vacation rentals, urban short-term stays, and
-              boutique hospitality.
+              Our team actively monitors your performance across Airbnb, VRBO, Booking.com,
+              Expedia, and every OTA channel — spotting opportunities the algorithms miss
+              and adjusting strategy based on years of hands-on experience with vacation rentals,
+              hotels, resorts, and boutique hospitality.
             </p>
           </div>
         </motion.div>

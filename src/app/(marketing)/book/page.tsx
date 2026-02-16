@@ -4,11 +4,11 @@ import CalendarEmbed from "./calendar-embed";
 export const metadata: Metadata = {
   title: "Book a Free Strategy Call | RevenuFlow Revenue Management",
   description:
-    "Book a free strategy call with RevenuFlow. We'll analyze your short-term rental portfolio and build a custom revenue optimization plan to maximize your earnings.",
+    "Book a free strategy call with RevenuFlow. We'll analyze your Airbnb, VRBO, Booking.com, hotel, or vacation rental portfolio and build a custom revenue optimization plan across all OTA channels.",
   openGraph: {
     title: "Book a Free Strategy Call | RevenuFlow",
     description:
-      "Get a free revenue analysis for your Airbnb or vacation rental portfolio. We specialize in dynamic pricing and revenue management for short-term rentals.",
+      "Get a free revenue analysis for your Airbnb, VRBO, Booking.com, or hotel portfolio. We specialize in dynamic pricing and revenue management across all vacation rental platforms.",
     url: "https://revenuflow.vercel.app/book",
   },
   alternates: {
