@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createLead } from "@/lib/db-server";
 import { createGHLContact } from "@/lib/ghl";
+import { sendLeadEmails } from "@/lib/sendgrid";
+import { sendLeadConfirmationSms } from "@/lib/twilio";
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,7 +23,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to Supabase leads table and push to GHL in parallel
+    // Save to Supabase + push to all external services in parallel
     const [id] = await Promise.all([
       createLead({
         name,
@@ -41,6 +43,18 @@ export async function POST(request: NextRequest) {
         tags: ["revenuflow-website", "cta-form"],
         source: "RevenuFlow Website",
       }),
+      sendLeadEmails({
+        name,
+        email,
+        phone,
+        propertyType,
+        propertyCount,
+        revenue,
+        location,
+      }),
+      ...(smsConsent && phone
+        ? [sendLeadConfirmationSms({ phone, name })]
+        : []),
     ]);
 
     return NextResponse.json({ success: true, id });

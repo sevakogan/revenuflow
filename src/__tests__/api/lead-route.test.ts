@@ -10,9 +10,19 @@ vi.mock("@/lib/ghl", () => ({
   createGHLContact: vi.fn().mockResolvedValue({ contact: { id: "ghl-123" } }),
 }));
 
+vi.mock("@/lib/sendgrid", () => ({
+  sendLeadEmails: vi.fn().mockResolvedValue(undefined),
+}));
+
+vi.mock("@/lib/twilio", () => ({
+  sendLeadConfirmationSms: vi.fn().mockResolvedValue({ sid: "SM123", status: "queued" }),
+}));
+
 import { POST } from "@/app/api/lead/route";
 import { createLead } from "@/lib/db-server";
 import { createGHLContact } from "@/lib/ghl";
+import { sendLeadEmails } from "@/lib/sendgrid";
+import { sendLeadConfirmationSms } from "@/lib/twilio";
 
 function makeRequest(body: Record<string, unknown>) {
   return new NextRequest("http://localhost:3000/api/lead", {
@@ -170,5 +180,39 @@ describe("POST /api/lead", () => {
         property_count: "1-5",
       })
     );
+  });
+
+  it("calls sendLeadEmails with correct data", async () => {
+    await POST(makeRequest(validPayload));
+
+    expect(sendLeadEmails).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: "John Smith",
+        email: "john@test.com",
+        propertyType: "vacation-rental",
+        propertyCount: "1-5",
+      })
+    );
+  });
+
+  it("calls sendLeadConfirmationSms when smsConsent is true and phone provided", async () => {
+    await POST(makeRequest({ ...validPayload, phone: "555-1234", smsConsent: true }));
+
+    expect(sendLeadConfirmationSms).toHaveBeenCalledWith({
+      phone: "555-1234",
+      name: "John Smith",
+    });
+  });
+
+  it("does not call sendLeadConfirmationSms when smsConsent is false", async () => {
+    await POST(makeRequest({ ...validPayload, phone: "555-1234", smsConsent: false }));
+
+    expect(sendLeadConfirmationSms).not.toHaveBeenCalled();
+  });
+
+  it("does not call sendLeadConfirmationSms when phone is not provided", async () => {
+    await POST(makeRequest({ ...validPayload, smsConsent: true }));
+
+    expect(sendLeadConfirmationSms).not.toHaveBeenCalled();
   });
 });

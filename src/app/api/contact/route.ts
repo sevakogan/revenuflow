@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createContactSubmission } from "@/lib/db-server";
 import { createGHLContact } from "@/lib/ghl";
+import { sendContactEmails } from "@/lib/sendgrid";
+import { sendContactConfirmationSms } from "@/lib/twilio";
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,7 +21,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to Supabase and push to GoHighLevel in parallel
+    // Save to Supabase + push to all external services in parallel
     const [id] = await Promise.all([
       createContactSubmission({
         name,
@@ -37,6 +39,16 @@ export async function POST(request: NextRequest) {
         tags: ["revenuflow-website", "contact-form"],
         source: "RevenuFlow Website",
       }),
+      sendContactEmails({
+        name,
+        email,
+        phone: phone as string,
+        message,
+        ...(company ? { company } : {}),
+      }),
+      ...(smsConsent && phone
+        ? [sendContactConfirmationSms({ phone: phone as string, name })]
+        : []),
     ]);
 
     return NextResponse.json({ success: true, id });

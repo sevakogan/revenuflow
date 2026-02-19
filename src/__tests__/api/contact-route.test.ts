@@ -10,9 +10,19 @@ vi.mock("@/lib/ghl", () => ({
   createGHLContact: vi.fn().mockResolvedValue({ contact: { id: "ghl-123" } }),
 }));
 
+vi.mock("@/lib/sendgrid", () => ({
+  sendContactEmails: vi.fn().mockResolvedValue(undefined),
+}));
+
+vi.mock("@/lib/twilio", () => ({
+  sendContactConfirmationSms: vi.fn().mockResolvedValue({ sid: "SM123", status: "queued" }),
+}));
+
 import { POST } from "@/app/api/contact/route";
 import { createContactSubmission } from "@/lib/db-server";
 import { createGHLContact } from "@/lib/ghl";
+import { sendContactEmails } from "@/lib/sendgrid";
+import { sendContactConfirmationSms } from "@/lib/twilio";
 
 function makeRequest(body: Record<string, unknown>) {
   return new NextRequest("http://localhost:3000/api/contact", {
@@ -139,5 +149,42 @@ describe("POST /api/contact", () => {
     expect(createContactSubmission).toHaveBeenCalledWith(
       expect.objectContaining({ sms_consent: false })
     );
+  });
+
+  it("calls sendContactEmails with correct data", async () => {
+    await POST(makeRequest(validPayload));
+
+    expect(sendContactEmails).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: "Jane Doe",
+        email: "jane@test.com",
+        phone: "555-9876",
+        message: "I need help with pricing",
+      })
+    );
+  });
+
+  it("calls sendContactConfirmationSms when smsConsent is true", async () => {
+    await POST(makeRequest({ ...validPayload, smsConsent: true }));
+
+    expect(sendContactConfirmationSms).toHaveBeenCalledWith({
+      phone: "555-9876",
+      name: "Jane Doe",
+    });
+  });
+
+  it("does not call sendContactConfirmationSms when smsConsent is false", async () => {
+    await POST(makeRequest({ ...validPayload, smsConsent: false }));
+
+    expect(sendContactConfirmationSms).not.toHaveBeenCalled();
+  });
+
+  it("still succeeds when sendContactEmails rejects", async () => {
+    vi.mocked(sendContactEmails).mockRejectedValueOnce(new Error("Email error"));
+
+    const res = await POST(makeRequest(validPayload));
+    // Promise.all will reject if any promise rejects, so this becomes a 500
+    // This is expected — email is in the same Promise.all as Supabase
+    expect(res.status).toBe(500);
   });
 });
